@@ -24,13 +24,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBotomOf="@+id/iv_detail"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="30sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            />
+            android:layout_gravity="center_horizontal" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
