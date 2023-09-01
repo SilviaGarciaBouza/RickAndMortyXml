@@ -18,17 +18,21 @@ import com.example.rickandmortynocompose.databinding.ItemBinding
 import com.squareup.picasso.Picasso
 
 class AdapterList(
-    val myList: List<RikyItemResponse>): RecyclerView.Adapter<AdapterList.ListHolder>(){
+    val myList: List<RikyItemResponse>,
+    private val onItemSelected: (Int) -> Unit
+): RecyclerView.Adapter<AdapterList.ListHolder>(){
 
 
     class ListHolder(val view: View): RecyclerView.ViewHolder(view) {
         //usas bind(aqui dentro el view de arriba del val view) y el layoutItemBinding es por lo del onCreateViewHolder de abajo
         val binding = ItemBinding.bind(view)
 
-        fun render(itemL: RikyItemResponse) {
+        fun render(itemL: RikyItemResponse,onItemSelected: (Int) -> Unit) {
             // itemHEroM es lo que está en paréntesis en render
             binding.tvItem.text = itemL.rikiName
             Picasso.get().load(itemL.rikiImage).into(binding.ivItem)
+            //load(la imagen q quieres cargar) into(dnd quieres cargar la imagen)
+            binding.root.setOnClickListener{onItemSelected(itemL.rikiId)}
 
 
         }
@@ -44,7 +48,9 @@ class AdapterList(
     }
 
     override fun onBindViewHolder(holder: ListHolder, position: Int) {
-        holder.render(myList[position])
+        holder.render(myList[position],onItemSelected)
     }
 
 }
+
+
