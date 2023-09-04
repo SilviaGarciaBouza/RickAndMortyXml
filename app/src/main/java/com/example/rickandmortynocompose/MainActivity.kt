@@ -51,7 +51,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToDetailActivity(id:Int) {
         val intent = Intent(this, DetailActivity::class.java)
+       // intent.putExtra(EXTRA_ID, id)
         intent.putExtra(EXTRA_ID, id)
+
         startActivity(intent)
     }
 

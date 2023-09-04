@@ -25,7 +25,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val id: Int = intent.extras?.getInt(EXTRA_ID) ?:1
+        val id: Int = intent.extras?.getInt(EXTRA_ID) ?: 1
         initUI(id)
     }
 
