@@ -17,6 +17,12 @@ class RickRepository @Inject constructor(private val api: RetrofitService, priva
         return api.doListRikyItems()
     }
 
+    suspend fun getCharacter(id: Int): RikyItemResponse{
+        return api.getCharacter(id)
+    }
+
+
+
     //FlowRoom:
     val getListRickAndMorty: Flow<List<RikyItemResponse>> = rickyDao.getTasks()
 }

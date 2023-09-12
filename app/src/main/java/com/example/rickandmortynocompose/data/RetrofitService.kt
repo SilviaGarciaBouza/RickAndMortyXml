@@ -22,5 +22,13 @@ class RetrofitService @Inject constructor(private val retrofit: Retrofit)
         }
     }
 
+    suspend fun getCharacter(id: Int): RikyItemResponse {
+        //(Dispatchers.IO) en hilo secundario
+        return withContext(Dispatchers.IO) {
+            val response = retrofit.create(RetrofitCLient::class.java).getCharacter(id)
+            response.body()!!.copy()
+        }
+    }
+
 
 }

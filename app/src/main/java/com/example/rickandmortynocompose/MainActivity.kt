@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun initUi() {
-        adapterList = AdapterList (viewModel.callList(), {navigateToDetailActivity(it)})
+        adapterList = AdapterList (viewModel.callList()) {navigateToDetailActivity(it)}
         binding.rvList.setHasFixedSize(true)
 //el rvHero es el id
         binding.rvList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -49,11 +49,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun navigateToDetailActivity(id:Int) {
+    private fun navigateToDetailActivity(idCharacter:Int) {
         val intent = Intent(this, DetailActivity::class.java)
-       // intent.putExtra(EXTRA_ID, id)
-        intent.putExtra(EXTRA_ID, id)
-
+        intent.putExtra(EXTRA_ID, idCharacter)
         startActivity(intent)
     }
 
