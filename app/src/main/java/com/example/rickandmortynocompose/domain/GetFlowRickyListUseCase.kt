@@ -12,3 +12,4 @@ class GetFlowRickyListUseCase @Inject constructor(private val repository: RickRe
         return repository.getListRickAndMorty
     }
 }
+

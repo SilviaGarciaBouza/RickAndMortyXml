@@ -19,6 +19,10 @@ import com.example.rickandmortynocompose.R
 import com.google.android.material.internal.Experimental
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.compose.runtime.produceState
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.rickandmortynocompose.ui.DetailActivity
 
 
@@ -31,14 +35,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var rvList: RecyclerView
     private lateinit var adapterList: AdapterList
+    private lateinit var imagesUiStates: ImagesUiStates
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initUi()
+       initUi()
 
-    }
+        }
+
+
+
+
+
     fun initUi() {
         adapterList = AdapterList (viewModel.callList()) {navigateToDetailActivity(it)}
         binding.rvList.setHasFixedSize(true)
@@ -54,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(EXTRA_ID, idCharacter)
         startActivity(intent)
     }
-
 }
 
 

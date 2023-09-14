@@ -29,19 +29,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailActivity : AppCompatActivity() {
 
-
     private val viewModel: RikyViewModel by viewModels()
-
     private lateinit var retrofit: Retrofit
-
     private lateinit var binding: ActivityDetailBinding
-
-
-
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +43,6 @@ class DetailActivity : AppCompatActivity() {
         getCharacter(id)
     }
 
-
-
     private fun getCharacter(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<RikyItemResponse> =
@@ -65,15 +53,11 @@ class DetailActivity : AppCompatActivity() {
                     //las viestas tienen q ir en hilo ppal y no en secundarios
                     runOnUiThread {
                         initUI(response)
-
                     }
                 }
             } else {
                 Log.i("SearchProblem", "No funciona")
                 Toast.makeText(this@DetailActivity, "Vuelve a la página inicial", Toast.LENGTH_SHORT).show()
-
-
-
             }
         }
 
@@ -97,7 +81,6 @@ class DetailActivity : AppCompatActivity() {
                 //para construir el retrofit
                 .build()
         }
-
 
     }
 
